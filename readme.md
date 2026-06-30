@@ -1,0 +1,1 @@
+postgresql://ram:1HZpqg2QHtAxf9fRqumHOEJbSanFOmps@dpg-d91u8uok1i2s739s485g-a.ohio-postgres.render.com/agentdata
