@@ -4,6 +4,7 @@ import airportsdata
 import pycountry
 import certifi
 from dotenv import load_dotenv
+import re
 
 load_dotenv()
 
@@ -11,11 +12,11 @@ os.environ["SSL_CERT_FILE"]=certifi.where()
 os.environ["REQUESTS_CA_BUNDLE"]=certifi.where()
 
 DEFAULT_ORIGIN_KEY=os.getenv("DEFAULT_ORIGIN_KEY","DEL")
-AVIATION_STACK_API_KEY=os.getenv("AVIATION_STACK_API_KEY")
+API_KEY=os.getenv("AVIATION_STACK_API_KEY")
 
 BASE_URL="https://api.aviationstack.com/v1/"
 
-AIRPORTS=airportsdata.load("IAIA")
+AIRPORTS=airportsdata.load("IATA")
 
 COUNTRY_ALIASES={
   "usa": "US",
@@ -397,7 +398,7 @@ def parse_route(query: str):
 
     if len(mentions) == 1:
         arr_iata = resolve_location_to_iata(mentions[0])
-        return DEFAULT_ORIGIN_IATA, arr_iata
+        return DEFAULT_ORIGIN_KEY, arr_iata
 
     return None, None
 
